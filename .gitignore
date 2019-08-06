@@ -4,5 +4,5 @@
 /Servers/
 
 # DB
-#!db/mysql/.gitkeep
-#db/mysql/*
+!db/mysql/.gitkeep
+db/mysql/*
