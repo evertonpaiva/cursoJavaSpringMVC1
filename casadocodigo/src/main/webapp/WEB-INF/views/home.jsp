@@ -8,5 +8,15 @@
 </head>
 <body>
 	<h1>Casa do Código</h1>
+	<table>
+		<tr>
+			<td>Java 8 Prático</td>
+			<td>Certificação OCJP</td>
+		</tr>
+		<tr>
+			<td>TDD na Prática</td>
+			<td>Google Android</td>
+		</tr>		
+	</table>
 </body>
 </html>
