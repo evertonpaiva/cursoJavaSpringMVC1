@@ -6,3 +6,7 @@
 # DB
 !db/mysql/.gitkeep
 db/mysql/*
+
+# Pasta de upload de arquivos
+!casadocodigo/src/main/webapp/arquivos-sumario/.gitkeep
+casadocodigo/src/main/webapp/arquivos-sumario/*
