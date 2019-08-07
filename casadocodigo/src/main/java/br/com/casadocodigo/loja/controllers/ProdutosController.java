@@ -20,43 +20,43 @@ import br.com.casadocodigo.loja.models.TipoPreco;
 import br.com.casadocodigo.loja.validation.ProdutoValidation;
 
 @Controller
+@RequestMapping("/produtos")
 public class ProdutosController {
 	
 	@Autowired
-	private ProdutoDAO produtoDao;
+	private ProdutoDAO dao;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.addValidators(new ProdutoValidation());
 	}
 
-	@RequestMapping("/produtos/form")
+	@RequestMapping("/form")
 	public ModelAndView form() {
 		ModelAndView modelAndView = new ModelAndView("produtos/form");
 		modelAndView.addObject("tipos", TipoPreco.values());
-		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/produtos", method=RequestMethod.POST)
-	public ModelAndView gravar(@Valid Produto produto, BindingResult result, RedirectAttributes redirectAttributes) {
+	@RequestMapping(method=RequestMethod.POST)
+	public ModelAndView gravar(@Valid Produto produto, BindingResult result, 
+				RedirectAttributes redirectAttributes){
 		
 		if(result.hasErrors()) {
 			return form();
 		}
 		
-		produtoDao.gravar(produto);		
+		System.out.println(produto);
+		dao.gravar(produto);
 		redirectAttributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso!");
 		return new ModelAndView("redirect:produtos");
 	}
 	
-	@RequestMapping(value="/produtos", method=RequestMethod.GET)
+	@RequestMapping( method=RequestMethod.GET)
 	public ModelAndView listar() {
-		List<Produto> produtos = produtoDao.listar();
+		List<Produto> produtos = dao.listar();
 		ModelAndView modelAndView = new ModelAndView("produtos/lista");
 		modelAndView.addObject("produtos", produtos);
-		
 		return modelAndView;
 	}
 }
-
